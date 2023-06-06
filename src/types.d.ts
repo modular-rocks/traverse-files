@@ -1,0 +1,1 @@
+declare module '@modular-rocks/traverse-files'
