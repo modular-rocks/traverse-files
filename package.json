@@ -1,6 +1,6 @@
 {
   "name": "@modular-rocks/traverse-files",
-  "version": "0.1.1-development",
+  "version": "0.2.0-development",
   "description": "Simply traversing files",
   "main": "./dist/index.js",
   "exports": {
