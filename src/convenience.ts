@@ -1,5 +1,5 @@
-const path = require("path");
-const { readFileSync, statSync, readdirSync } = require("fs");
+import path from "path";
+import { readFileSync, statSync, readdirSync } from "fs";
 
 export const read = (path: string) => readFileSync(path).toString()
 export const resolve = (dirname: string, filename: string) => path.resolve(dirname, filename)

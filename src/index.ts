@@ -1,4 +1,4 @@
-const path = require("path");
+import path from "path";
 
 import { read, resolve, readFilesInDirectory, isDirectory } from './convenience'
 

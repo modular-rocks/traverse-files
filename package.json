@@ -1,6 +1,6 @@
 {
   "name": "@modular-rocks/traverse-files",
-  "version": "0.2.2-development",
+  "version": "0.2.3-development",
   "description": "Simply traversing files",
   "main": "./dist/index.js",
   "exports": {
@@ -47,16 +47,5 @@
     "access": "public"
   },
   "dependencies": {
-    "@babel/core": "7.2.2",
-    "@babel/plugin-proposal-class-properties": "7.4.0",
-    "@babel/plugin-syntax-jsx": "7.2.0",
-    "@babel/plugin-syntax-typescript": "7.20.0",
-    "@babel/plugin-transform-react-jsx": "7.20.13",
-    "@babel/plugin-transform-typescript": "7.20.13",
-    "@babel/preset-env": "7.20.2",
-    "@babel/preset-react": "7.18.6",
-    "@babel/preset-typescript": "7.18.6",
-    "@babel/types": "7.22.4",
-    "typescript": "5.1.3"
   }
 }
