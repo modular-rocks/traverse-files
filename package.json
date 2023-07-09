@@ -43,7 +43,8 @@
     "url": "https://github.com/modular-rocks/traverse-files.git"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "dependencies": {
     "@babel/core": "7.2.2",
