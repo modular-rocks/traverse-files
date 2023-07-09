@@ -34,12 +34,30 @@ const collect = (path: string, extensions: string[], ignoredExtensions: string[]
   return output
 }
 
+const readDirectory = (opts: Options) => {
+  const { src, packagePath, extensions, ignoredFiles } = opts;
+  const packageContents: RandomObject = JSON.parse(read(packagePath));
+
+  const files: [string, string][] = [];
+  const readFiles: string[] = collect(src, extensions, ignoredFiles, true);
+
+  readFiles.forEach((path: string) => {
+    files.push([path, read(path)]);
+  });
+
+  return {
+    files,
+    packageContents,
+  };
+};
+
 export { 
   read, 
   resolve, 
   collect, 
   traverse, 
   removeTests, 
-  removeExtensions, 
+  readDirectory,
+  removeExtensions,
   removeIgnoredExtensions 
 }

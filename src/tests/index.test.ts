@@ -1,10 +1,12 @@
+import { Path } from 'typescript';
 import { 
   resolve, 
   collect, 
   traverse, 
   removeTests, 
   removeExtensions, 
-  removeIgnoredExtensions 
+  removeIgnoredExtensions,
+  readDirectory
 } from '../index'
 
 describe("removeExtensions works as intended", () => {
@@ -57,6 +59,28 @@ describe("traverse works as intended", () => {
     collected = collected.map((path: string) => path.replace(process.cwd(), ''))
 
     const expected = ["/src/tests/test-directory/nested/one.js", "/src/tests/test-directory/nested/three.js", "/src/tests/test-directory/nested/two.js", "/src/tests/test-directory/one-declaration.d.ts", "/src/tests/test-directory/one-test.test.js", "/src/tests/test-directory/one.js", "/src/tests/test-directory/three.js", "/src/tests/test-directory/two.js"]
+
+    expect(collected).toEqual(expected);
+  });
+});
+describe("readDirectory works as intended", () => {
+  test("", () => {
+    const src: string = resolve(__dirname, './test-directory')
+    const packagePath: string = resolve(__dirname, './test-package.json')
+    const extensions = ['js', 'ts', 'tsx', 'jsx']
+    const ignoredFiles = ['.d.ts', '.d.tsx']
+
+    const opts = {
+      src,
+      packagePath,
+      extensions,
+      ignoredFiles
+    }
+
+    let collected: Directory = readDirectory(opts)
+    collected.files.forEach((file: CollectedFile) => file[0] = file[0].replace(process.cwd(), ''))
+
+    const expected = {"files": [["/src/tests/test-directory/nested/one.js", ""], ["/src/tests/test-directory/nested/three.js", ""], ["/src/tests/test-directory/nested/two.js", ""], ["/src/tests/test-directory/one.js", ""], ["/src/tests/test-directory/three.js", ""], ["/src/tests/test-directory/two.js", ""]], "packageContents": {}}
 
     expect(collected).toEqual(expected);
   });
