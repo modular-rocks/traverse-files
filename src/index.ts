@@ -35,8 +35,7 @@ const collect = (path: string, extensions: string[], ignoredExtensions: string[]
 }
 
 const readDirectory = (opts: Options) => {
-  const { src, packagePath, extensions, ignoredFiles } = opts;
-  const packageContents: RandomObject = JSON.parse(read(packagePath));
+  const { src, extensions, ignoredFiles } = opts;
 
   const files: [string, string][] = [];
   const readFiles: string[] = collect(src, extensions, ignoredFiles, true);
@@ -45,10 +44,11 @@ const readDirectory = (opts: Options) => {
     files.push([path, read(path)]);
   });
 
-  return {
-    files,
-    packageContents,
-  };
+  return files
+};
+
+const readJSONFile = (packagePath: string) => {
+  return JSON.parse(read(packagePath));
 };
 
 export { 
@@ -56,7 +56,8 @@ export {
   resolve, 
   collect, 
   traverse, 
-  removeTests, 
+  removeTests,
+  readJSONFile, 
   readDirectory,
   removeExtensions,
   removeIgnoredExtensions 

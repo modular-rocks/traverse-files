@@ -5,12 +5,8 @@ type CollectedFile = [string, string]
 
 interface Options {
   src: string;
-  packagePath: string;
   extensions: string[];
   ignoredFiles: string[];
 }
 
-interface Directory {
-  files: [string, string][],
-  packageContents: RandomObject
-}
+type Directory = CollectedFile[]
